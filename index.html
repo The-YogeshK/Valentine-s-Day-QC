@@ -8,24 +8,25 @@
   <style>
     body {
       text-align: center;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      margin: 50px;
+      font-family: 'Comic Sans MS', sans-serif;
+      margin: 10px; /* Adjusted margin for smaller screens */
       background-color: #fcdede; /* Cute background color */
       overflow: hidden;
       position: relative;
     }
 
     img {
-      max-width: 100%;
+      max-width: 80%; /* Adjusted image size */
       border-radius: 10px; /* Add a rounded border to the image */
+      margin: 10px 0; /* Added margin for better spacing */
       z-index: 1; /* Ensure image is on top of hearts and flowers */
     }
 
     button {
-      margin: 10px;
-      padding: 10px 20px;
+      margin: 5px;
+      padding: 5px 10px; /* Adjusted button padding */
       cursor: pointer;
-      font-size: 16px;
+      font-size: 14px; /* Adjusted font size */
       background-color: #ffc0cb; /* Cute pink button color */
       border: none;
       border-radius: 5px;
@@ -34,11 +35,11 @@
 
     .heart,
     .flower {
-      font-size: 16px;
+      font-size: 14px; /* Adjusted emoji size */
       color: #ff6384; /* Heart and flower color */
       position: absolute;
       transform-origin: 50% 50%;
-      animation: fallElement 4s linear infinite; /* Falling heart and flower animation */
+      animation: fallElement 15s linear infinite; /* Falling heart and flower animation */
       z-index: 0; /* Ensure hearts and flowers are behind text and buttons */
     }
 
@@ -59,7 +60,7 @@
 <body>
   <!-- Add more hearts and flowers around the content -->
   <script>
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 50; i++) {
       createHeart();
     }
 
@@ -74,7 +75,7 @@
       document.body.appendChild(heart);
     }
 
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 25; i++) {
       createFlower();
     }
 
@@ -100,7 +101,7 @@
   <div id="step2" style="display: none;">
     <img src="https://media1.tenor.com/m/pubELdloCG4AAAAC/puuung-wink.gif" alt="Valentine's Day Gif">
     <p class="heart" style="top: 30%; left: 70%;">❤️</p>
-    <p>Would you be up for celebrating Valentine's Day by reminiscing our happy moments, sharing some laughs, and cherishing our good times and appreciating this friendship? </p>
+    <p>Would you be up for celebrating Valentine's Day by reminiscing our happy moments, sharing some laughs, and cherishing our good times and appreciating this friendship?</p>
     <div>
       <button id="noButton" onclick="increaseNoButton()">No</button>
       <button id="yesButton" onclick="celebrateYes()">Yes</button>
