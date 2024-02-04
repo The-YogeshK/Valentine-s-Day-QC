@@ -1,171 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day Celebration</title>
   <style>
     body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f5f5f5;
-      overflow: hidden; /* prevent scrolling */
-    }
-
-    #valentine-container {
       text-align: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin: 50px;
+      background-color: #fcdede; /* Cute background color */
+      overflow: hidden;
+      position: relative;
     }
 
-    #valentine-gif {
+    img {
       max-width: 100%;
-      height: auto;
+      border-radius: 10px; /* Add a rounded border to the image */
+      z-index: 1; /* Ensure image is on top of hearts and flowers */
     }
 
-    #post-gif {
-      max-width: 100%;
-      height: auto;
-      display: none; /* Initially hide the post-gif */
-    }
-
-    #message {
-      font-size: 1.5em;
-      margin-top: 20px;
-    }
-
-    #buttons-container {
-      margin-top: 20px;
-    }
-
-    .button {
+    button {
+      margin: 10px;
       padding: 10px 20px;
-      font-size: 1em;
       cursor: pointer;
-      margin: 0 20px;
-      transition: transform 0.3s ease-in-out;
+      font-size: 16px;
+      background-color: #ffc0cb; /* Cute pink button color */
+      border: none;
+      border-radius: 5px;
+      z-index: 2; /* Ensure buttons are on top of hearts and flowers */
     }
 
-    #yes-button {
-      background-color: #4caf50;
-      color: #fff;
-      border: none;
-    }
-
-    #no-button {
-      background-color: #ff4d4d;
-      color: #fff;
-      border: none;
+    .heart,
+    .flower {
+      font-size: 16px;
+      color: #ff6384; /* Heart and flower color */
       position: absolute;
-      transition: transform 0.3s ease-in-out;
+      transform-origin: 50% 50%;
+      animation: fallElement 4s linear infinite; /* Falling heart and flower animation */
+      z-index: 0; /* Ensure hearts and flowers are behind text and buttons */
     }
 
-    #no-button:hover {
-      animation: moveAround 0.5s infinite linear; /* Increased speed */
-    }
-
-    @keyframes moveAround {
+    @keyframes fallElement {
       0% {
-        transform: translate(0, 0);
-      }
-      25% {
-        transform: translate(50px, 0);
-      }
-      50% {
-        transform: translate(0, 50px);
-      }
-      75% {
-        transform: translate(-50px, 0);
-      }
-      100% {
-        transform: translate(0, -50px);
-      }
-    }
-
-    #result-message {
-      font-size: 1.2em;
-      margin-top: 20px;
-      display: none;
-    }
-
-    @keyframes heartsAnimation {
-      0% {
-        transform: translateY(0);
+        transform: translateY(-5vh) rotate(0deg);
         opacity: 0;
       }
-      50% {
-        transform: translateY(-30px);
+
+      50%, 100% {
+        transform: translateY(100vh) rotate(360deg);
         opacity: 1;
       }
-      100% {
-        transform: translateY(0);
-        opacity: 0;
-      }
-    }
-
-    .hearts {
-      position: absolute;
-      display: none;
-      width: 20px;
-      height: 20px;
-      background-color: red;
-      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     }
   </style>
 </head>
+
 <body>
-
-<div id="valentine-container">
-  <img id="valentine-gif" src="https://media1.tenor.com/m/zWOVVExw61MAAAAC/puuung-hug.gif" alt="Valentine GIF">
-  <img id="post-gif" src="https://media1.tenor.com/m/pHRqndHTWtoAAAAd/puuung.gif" alt="Post Valentine GIF">
-  <div id="message">Will you be my Valentine?</div>
-  <div id="buttons-container">
-    <button id="yes-button" class="button" onclick="showResult('Yes')">Yes</button>
-    <button id="no-button" class="button" onclick="moveNoButton()">No</button>
-  </div>
-  <div id="result-message"></div>
-  <div id="hearts-container"></div>
-</div>
-
-<script>
-  function moveNoButton() {
-    var noButton = document.getElementById('no-button');
-    noButton.style.transform = `translate(${Math.random() * (window.innerWidth - 100)}px, ${Math.random() * (window.innerHeight - 100)}px)`;
-  }
-
-  function showResult(answer) {
-    var resultMessage = document.getElementById('result-message');
-    var heartsContainer = document.getElementById('hearts-container');
-    var postGif = document.getElementById('post-gif');
-
-    resultMessage.innerHTML = 'You said ' + answer + '! Happy Valentine\'s Day!';
-    resultMessage.style.display = 'block';
-
-    // Show hearts animation
-    heartsContainer.innerHTML = '';
-    for (let i = 0; i < 10; i++) {
-      var heart = document.createElement('div');
-      heart.className = 'hearts';
-      heart.style.left = Math.random() * window.innerWidth + 'px';
-      heartsContainer.appendChild(heart);
+  <!-- Add more hearts and flowers around the content -->
+  <script>
+    for (let i = 0; i < 100; i++) {
+      createHeart();
     }
 
-    var hearts = document.querySelectorAll('.hearts');
-    hearts.forEach((heart, index) => {
-      var animationDuration = Math.random() * 1 + 1; // Random duration between 1 and 2 seconds
-      var animationDelay = Math.random() * 0.5; // Random delay up to 0.5 seconds
-      heart.style.animation = `heartsAnimation ${animationDuration}s ${animationDelay}s infinite`;
-    });
+    function createHeart() {
+      const heart = document.createElement('p');
+      heart.innerHTML = '❤️';
+      heart.className = 'heart';
+      const positionX = Math.random() * window.innerWidth;
+      const positionY = Math.random() * window.innerHeight;
+      heart.style.left = `${positionX}px`;
+      heart.style.top = `${positionY}px`;
+      document.body.appendChild(heart);
+    }
 
-    // Hide original gif and show post-gif
-    document.getElementById('valentine-gif').style.display = 'none';
-    postGif.style.display = 'block';
+    for (let i = 0; i < 50; i++) {
+      createFlower();
+    }
 
-    // Hide the question and buttons
-    document.getElementById('message').style.display = 'none';
-    document.getElementById('buttons-container').style.display = 'none';
-  }
-</script>
+    function createFlower() {
+      const flower = document.createElement('p');
+      flower.innerHTML = '🌸';
+      flower.className = 'flower';
+      const positionX = Math.random() * window.innerWidth;
+      const positionY = Math.random() * window.innerHeight;
+      flower.style.left = `${positionX}px`;
+      flower.style.top = `${positionY}px`;
+      document.body.appendChild(flower);
+    }
+  </script>
 
+  <div id="step1">
+    <img src="https://media.tenor.com/9UfBFztRThcAAAAi/puuung-lazy.gif" alt="Valentine's Day Gif">
+    <p>Hey, do you know why Valentine's Day is celebrated?</p>
+    <p>Valentine's Day isn't just for romance; it's about cherishing all the people we love, people who are special and mean a lot in your life.</p>
+    <button onclick="nextStep()">Next</button>
+  </div>
+
+  <div id="step2" style="display: none;">
+    <img src="https://media1.tenor.com/m/pubELdloCG4AAAAC/puuung-wink.gif" alt="Valentine's Day Gif">
+    <p class="heart" style="top: 30%; left: 70%;">❤️</p>
+    <p>Would you be up for celebrating Valentine's Day by reminiscing our happy moments, sharing some laughs, and cherishing our good times and appreciating this friendship? </p>
+    <div>
+      <button id="noButton" onclick="increaseNoButton()">No</button>
+      <button id="yesButton" onclick="celebrateYes()">Yes</button>
+    </div>
+  </div>
+
+  <div id="step3" style="display: none;">
+    <img src="https://media1.tenor.com/m/OuZljZDRYNAAAAAd/puuung-hug-puuung.gif" alt="Valentine's Day Gif">
+    <p class="flower" style="top: 70%; left: 20%;">🌸</p>
+    <p>Awe! Happy Valentine's Day! So thrilled to create more amazing memories, laughter, and heartwarming moments with you!</p>
+  </div>
+
+  <script>
+    let step = 1;
+    let noButtonPhrases = [
+      "No - Missing out on amazing moments!",
+      "No - Are you sure? Think again!",
+      "No - You won't regret saying yes!",
+      "No - Trust me, you want to say yes!",
+      "No - Saying yes is the best decision!",
+      "No - Your heart will thank you later!",
+      "No - The answer is really 'Yes,' try again!",
+      "No - Imagine all the love and flowers you're missing!",
+      "No - There's a 'Yes' hiding in there somewhere!",
+      "No - Don't miss out on this heart-filled celebration!",
+      "No - Say 'Yes' and let the love flow!",
+      "No - One 'Yes' away from happiness!",
+      "No - The more 'No,' the more love you're missing!",
+      "No - Even flowers say 'Yes'!",
+      "No - 'Yes' is the secret to a happy heart!",
+      "No - 'No' is just a step closer to 'Yes'!",
+      "No - 'No' to 'Yes' is a love story waiting to happen!",
+      "No - You deserve a 'Yes' filled with love!",
+      "No - 'No' can become a 'Yes' with a little love!",
+      // Add more phrases as needed
+    ];
+    let currentPhraseIndex = 0;
+    let yesButtonSize = 16;
+
+    function nextStep() {
+      document.getElementById("step1").style.display = "none";
+      document.getElementById("step2").style.display = "block";
+      step++;
+    }
+
+    function increaseNoButton() {
+      const noButton = document.getElementById("noButton");
+      noButton.innerHTML = noButtonPhrases[currentPhraseIndex];
+      currentPhraseIndex = (currentPhraseIndex + 1) % noButtonPhrases.length;
+
+      const yesButton = document.getElementById("yesButton");
+      yesButtonSize += 20; // Increase size more dramatically
+      yesButton.style.fontSize = `${yesButtonSize}px`;
+    }
+
+    function celebrateYes() {
+      document.getElementById("step2").style.display = "none";
+      document.getElementById("step3").style.display = "block";
+      // Reset yesButtonSize if needed
+      // yesButtonSize = 16;
+    }
+  </script>
 </body>
+
 </html>
