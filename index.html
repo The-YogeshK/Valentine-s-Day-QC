@@ -15,10 +15,12 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
+        position: relative;
     }
 
     .container {
         text-align: center;
+        position: relative;
     }
 
     h1 {
@@ -38,6 +40,7 @@
         cursor: pointer;
         overflow: hidden;
         transition: transform 0.4s ease;
+        z-index: 1;
     }
 
     .envelope:hover {
@@ -52,7 +55,7 @@
         height: 20px;
         background-color: #FF6863;
         transform: rotate(-45deg);
-        z-index: 1;
+        z-index: 2;
     }
 
     .flap {
@@ -82,7 +85,8 @@
         background-color: #fff;
         padding: 20px;
         box-sizing: border-box;
-        overflow-y: scroll;
+        overflow-y: auto;
+        z-index: 0;
     }
 
     .letter-content.active {
@@ -104,6 +108,27 @@
         font-size: 1.5rem;
         color: #FF6863;
         cursor: pointer;
+        z-index: 2;
+    }
+
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #FF6863;
+        border-radius: 50%;
+        z-index: 0;
+    }
+
+    @keyframes burst {
+        0% {
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(2);
+            opacity: 0;
+        }
     }
 </style>
 </head>
@@ -125,8 +150,8 @@
         <p>Your kindness, your laughter, and your unwavering support mean everything to me. You are my rock, my confidante, and my greatest love.</p>
         <p>Thank you for being by my side through thick and thin. I cherish every moment we spend together, and I look forward to creating many more beautiful memories with you.</p>
         <p>Happy Valentine's Day, my love. You are my everything.</p>
-        <p>With all love,</p>
-        <p>Da Patti</p>
+        <p>With all my love,</p>
+        <p>[Your Name]</p>
     </div>
 </div>
 
@@ -139,6 +164,26 @@
         setTimeout(function() {
             letterContent.classList.add('active');
         }, 400);
+
+        // Create and animate hearts
+        for (var i = 0; i < 10; i++) {
+            createHeart();
+        }
+    }
+
+    function createHeart() {
+        var heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.top = Math.random() * window.innerHeight + 'px';
+        document.body.appendChild(heart);
+
+        setTimeout(function() {
+            heart.style.animation = 'burst 1s ease forwards';
+            setTimeout(function() {
+                heart.remove();
+            }, 1000);
+        }, 100);
     }
 
     function closeLetter() {
