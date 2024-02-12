@@ -19,6 +19,7 @@
 
     .container {
         text-align: center;
+        position: relative;
     }
 
     h1 {
@@ -30,6 +31,7 @@
     .envelope-container {
         position: relative;
         margin-bottom: 50px;
+        display: inline-block;
     }
 
     .envelope {
@@ -42,7 +44,6 @@
         cursor: pointer;
         transition: transform 0.4s ease;
         overflow: hidden;
-        margin-top: 50px;
     }
 
     .heart {
@@ -108,18 +109,6 @@
         line-height: 1.6;
     }
 
-    .open-letter-btn {
-        background-color: #FF6863;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1rem;
-        margin-top: 50px;
-        display: inline-block;
-    }
-
     .floating-emoji {
         position: absolute;
         animation: float 3s infinite ease-in-out;
@@ -162,6 +151,14 @@
             height: auto;
             max-width: 300px;
         }
+
+        .envelope-container {
+            margin-bottom: 20px;
+        }
+
+        .floating-emoji {
+            display: none;
+        }
     }
 
     @keyframes float {
@@ -194,8 +191,6 @@
 <div class="floating-emoji emoji2">&#x1F49C;</div>
 <div class="floating-emoji emoji3">&#x1F497;</div>
 
-<button class="open-letter-btn" onclick="openLetter()">Open Letter</button>
-
 <div class="letter-content" id="letterContent">
     <div class="letter">
         <h2>My Dearest Kia,</h2>
@@ -210,8 +205,10 @@
 
 <script>
     function openLetter() {
-        document.querySelector('.container').style.display = 'none';
-        document.querySelector('.open-letter-btn').style.display = 'none';
+        document.querySelector('.envelope-container').style.display = 'none';
+        document.querySelectorAll('.floating-emoji').forEach(function(el) {
+            el.style.display = 'none';
+        });
         document.querySelector('.letter-content').classList.add('active');
     }
 </script>
