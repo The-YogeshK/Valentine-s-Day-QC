@@ -35,9 +35,9 @@
     }
 
     .emoji {
-        position: absolute;
+        position: fixed; /* Change from absolute to fixed */
         animation: fall 5s linear infinite;
-        z-index: 2; /* Ensure emojis are in front */
+        z-index: 999; /* Set z-index to ensure emojis appear above other elements */
     }
 
     .envelope {
@@ -153,7 +153,6 @@
         }
     }
 </style>
-
 </head>
 <body>
 
@@ -161,10 +160,11 @@
     <h1>Happy Valentine's Day! 💌</h1>
     
     <!-- Emojis falling randomly -->
-    <div class="emoji" style="left: 10%; animation-delay: 1s;">&#128525;</div>
-    <div class="emoji" style="left: 20%; animation-delay: 2s;">&#128514;</div>
-    <div class="emoji" style="left: 30%; animation-delay: 3s;">&#128536;</div>
-    <div class="emoji" style="left: 40%; animation-delay: 4s;">&#128525;</div>
+    <div class="emoji">&#128525;</div>
+    <div class="emoji">&#128514;</div>
+    <div class="emoji">&#128536;</div>
+    <div class="emoji">&#128525;</div>
+    
     <div class="envelope" onclick="openLetter()">
         <div class="front-design"></div>
         <div class="flap"></div>
@@ -178,11 +178,11 @@
     <p>As the world celebrates love on this beautiful Valentine's Day, I find myself drawn to express my deepest sentiments to you. It is with a heart full of gratitude and admiration that I write these words to you.</p>
     <p>First and foremost, I want to wish you a Happy Valentine's Day. May this day be filled with warmth, joy, and an abundance of love, just like the love you radiate into my life every single day.</p>
     <p>I want to take this moment to express my heartfelt appreciation for all that you are and all that you do. Your presence in my life has been nothing short of transformative. You have an incredible ability to touch the lives of those around you, including mine, with your kindness, compassion, and unwavering support.</p>
-    <p>In the midst of life's challenges, you continue to shine brightly, demonstrating resilience and strength beyond measure. Your dedication to your dreams and your unwavering commitment to making a positive difference in the world inspire me endlessly.</p>
+    <p>In the midst of life's challenges, you continue to shine brightly, demonstrating resilience and strength beyond measure. Your dedication to your dreams andyour unwavering commitment to making a positive difference in the world inspire me endlessly.</p>
     <p>I believe in you wholeheartedly, Kia. I believe in your ability to overcome any obstacle, to achieve your goals, and to become the incredible nurse that you aspire to be. Your compassion and empathy make you a natural healer, and I have no doubt that you will touch countless lives with your kindness and care.</p>
     <p>As we celebrate this day of love, I want you to know that you deserve every ounce of happiness and love that comes your way. You are a beacon of light in my life, and I am eternally grateful for your presence. I promise to stand by your side, supporting you, loving you, and cherishing every moment we share together.</p>
     <p>Thank you for being the extraordinary person that you are, Kia. You are my greatest blessing, and I am forever grateful for the gift of your love.</p>
-    <p>With all my love and admiration</p>
+    <p>With all my love and admiration,</p>
     <p>~Da Patti</p>
     </div>
 </div>
@@ -210,7 +210,7 @@
     function createHeart() {
         var heart = document.createElement('div');
         heart.classList.add('heart');
-        heart.innerHTML = '❤️';
+        heart.innerHTML = '❤';
         heart.style.left = Math.random() * 90 + 'vw';
         heart.style.top = '0';
         document.body.appendChild(heart);
