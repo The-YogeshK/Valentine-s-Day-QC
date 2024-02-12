@@ -1,169 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentine's Day Celebration</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual Valentine's Day Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+<style>
     body {
-      text-align: center;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      margin: 10px; /* Adjusted margin for smaller screens */
-      background-color: #fcdede; /* Cute background color */
-      overflow: hidden;
-      position: relative;
+        background-color: #ffc3da;
+        font-family: 'Shadows Into Light', cursive;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
     }
 
-    img {
-      max-width: 80%; /* Adjusted image size */
-      border-radius: 10px; /* Add a rounded border to the image */
-      margin: 10px 0; /* Added margin for better spacing */
-      z-index: 1; /* Ensure image is on top of hearts and flowers */
+    .container {
+        text-align: center;
     }
 
-    button {
-      margin: 5px;
-      padding: 5px 10px; /* Adjusted button padding */
-      cursor: pointer;
-      font-size: 14px; /* Adjusted font size */
-      background-color: #ffc0cb; /* Cute pink button color */
-      border: none;
-      border-radius: 5px;
-      z-index: 2; /* Ensure buttons are on top of hearts and flowers */
+    h1 {
+        font-size: 3rem;
+        color: #FF6863;
+        margin-bottom: 30px;
     }
 
-    .heart,
-    .flower {
-      font-size: 14px; /* Adjusted emoji size */
-      color: #ff6384; /* Heart and flower color */
-      position: absolute;
-      transform-origin: 50% 50%;
-      animation: fallElement 15s linear infinite; /* Falling heart and flower animation */
-      z-index: 0; /* Ensure hearts and flowers are behind text and buttons */
+    .envelope-container {
+        position: relative;
+        margin-bottom: 50px;
     }
 
-    @keyframes fallElement {
-      0% {
-        transform: translateY(-5vh) rotate(0deg);
-        opacity: 0;
-      }
-
-      50%, 100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 1;
-      }
+    .envelope {
+        position: relative;
+        width: 200px;
+        height: 150px;
+        background-color: #f9e5e5;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: transform 0.4s ease;
+        overflow: hidden;
+        margin-top: 50px;
     }
-  </style>
+
+    .heart {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 2rem;
+        color: #FF6863;
+    }
+
+    .front-design {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: #FF6863;
+        transform: rotate(-45deg);
+        z-index: 1;
+    }
+
+    .flap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: #f9e5e5;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.4s ease;
+    }
+
+    .envelope.open .flap {
+        transform: translateY(-100%);
+    }
+
+    .letter-content {
+        display: none;
+    }
+
+    .letter-content.active {
+        display: block;
+    }
+
+    .letter {
+        background-color: #fff;
+        border: 2px solid #FF6863;
+        border-radius: 10px;
+        padding: 20px;
+        margin: auto;
+        max-width: 600px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+        color: #FF6863;
+        margin-bottom: 20px;
+    }
+
+    p {
+        line-height: 1.6;
+    }
+
+    .open-letter-btn {
+        background-color: #FF6863;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 50px;
+        display: inline-block;
+    }
+
+    .floating-emoji {
+        position: absolute;
+        animation: float 3s infinite ease-in-out;
+    }
+
+    .emoji1 {
+        font-size: 2rem;
+        color: #FF6863;
+        left: 20%;
+        top: 50%;
+    }
+
+    .emoji2 {
+        font-size: 2.5rem;
+        color: #FF6863;
+        left: 50%;
+        top: 20%;
+    }
+
+    .emoji3 {
+        font-size: 3rem;
+        color: #FF6863;
+        left: 80%;
+        top: 70%;
+    }
+
+    .gif-container {
+        margin-top: 50px;
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+        border: 2px solid #FF6863;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    @media (max-width: 480px) {
+        .envelope {
+            width: 90%;
+            height: auto;
+            max-width: 300px;
+        }
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+</style>
 </head>
-
 <body>
-  <!-- Add more hearts and flowers around the content -->
-  <script>
-    for (let i = 0; i < 50; i++) {
-      createHeart();
-    }
 
-    function createHeart() {
-      const heart = document.createElement('p');
-      heart.innerHTML = '❤️';
-      heart.className = 'heart';
-      const positionX = Math.random() * window.innerWidth;
-      const positionY = Math.random() * window.innerHeight;
-      heart.style.left = `${positionX}px`;
-      heart.style.top = `${positionY}px`;
-      document.body.appendChild(heart);
-    }
-
-    for (let i = 0; i < 25; i++) {
-      createFlower();
-    }
-
-    function createFlower() {
-      const flower = document.createElement('p');
-      flower.innerHTML = '🌸';
-      flower.className = 'flower';
-      const positionX = Math.random() * window.innerWidth;
-      const positionY = Math.random() * window.innerHeight;
-      flower.style.left = `${positionX}px`;
-      flower.style.top = `${positionY}px`;
-      document.body.appendChild(flower);
-    }
-  </script>
-
-  <div id="step1">
-    <img src="https://media.tenor.com/9UfBFztRThcAAAAi/puuung-lazy.gif" alt="Valentine's Day Gif">
-    <p>Hey, do you know why Valentine's Day is celebrated?</p>
-    <p>Valentine's Day isn't just for romance; it's about cherishing all the people we love, people who are special and mean a lot in your life.</p>
-    <button onclick="nextStep()">Next</button>
-  </div>
-
-  <div id="step2" style="display: none;">
-    <img src="https://media1.tenor.com/m/pubELdloCG4AAAAC/puuung-wink.gif" alt="Valentine's Day Gif">
-    <p class="heart" style="top: 30%; left: 70%;">❤️</p>
-    <p>Would you be up for celebrating Valentine's Day by reminiscing our happy moments, sharing some laughs, and cherishing our good times and appreciating this friendship?</p>
-    <div>
-      <button id="noButton" onclick="increaseNoButton()">No</button>
-      <button id="yesButton" onclick="celebrateYes()">Yes</button>
+<div class="container">
+    <h1>Happy Valentine's Day!</h1>
+    <div class="envelope-container">
+        <div class="envelope" onclick="openLetter()">
+            <div class="front-design"></div>
+            <div class="flap"></div>
+            <p style="position: absolute; top: 120px; left: 50%; transform: translateX(-50%); font-size: 1.2rem; color: #FF6863;">Open</p>
+        </div>
     </div>
-  </div>
+</div>
 
-  <div id="step3" style="display: none;">
-    <img src="https://media1.tenor.com/m/OuZljZDRYNAAAAAd/puuung-hug-puuung.gif" alt="Valentine's Day Gif">
-    <p class="flower" style="top: 70%; left: 20%;">🌸</p>
-    <p>Awe! Happy Valentine's Day! So thrilled to create more amazing memories, laughter, and heartwarming moments with you!</p>
-  </div>
+<div class="floating-emoji emoji1">&#x1F495;</div>
+<div class="floating-emoji emoji2">&#x1F49C;</div>
+<div class="floating-emoji emoji3">&#x1F497;</div>
 
-  <script>
-    let step = 1;
-    let noButtonPhrases = [
-      "No - Missing out on amazing moments!",
-      "No - Are you sure? Think again!",
-      "No - You won't regret saying yes!",
-      "No - Trust me, you want to say yes!",
-      "No - Saying yes is the best decision!",
-      "No - Your heart will thank you later!",
-      "No - The answer is really 'Yes,' try again!",
-      "No - Imagine all the love and flowers you're missing!",
-      "No - There's a 'Yes' hiding in there somewhere!",
-      "No - Don't miss out on this heart-filled celebration!",
-      "No - Say 'Yes' and let the love flow!",
-      "No - One 'Yes' away from happiness!",
-      "No - The more 'No,' the more love you're missing!",
-      "No - Even flowers say 'Yes'!",
-      "No - 'Yes' is the secret to a happy heart!",
-      "No - 'No' is just a step closer to 'Yes'!",
-      "No - 'No' to 'Yes' is a love story waiting to happen!",
-      "No - You deserve a 'Yes' filled with love!",
-      "No - 'No' can become a 'Yes' with a little love!",
-      // Add more phrases as needed
-    ];
-    let currentPhraseIndex = 0;
-    let yesButtonSize = 16;
+<button class="open-letter-btn" onclick="openLetter()">Open Letter</button>
 
-    function nextStep() {
-      document.getElementById("step1").style.display = "none";
-      document.getElementById("step2").style.display = "block";
-      step++;
+<div class="letter-content" id="letterContent">
+    <div class="letter">
+        <h2>My Dearest Kia,</h2>
+        <p>On this special day, I want to express my deepest love and gratitude to you. You are the light of my life, and I am grateful every day for your presence.</p>
+        <p>Your kindness, your laughter, and your unwavering support mean everything to me. You are my rock, my confidante, and my greatest love.</p>
+        <p>Thank you for being by my side through thick and thin. I cherish every moment we spend together, and I look forward to creating many more beautiful memories with you.</p>
+        <p>Happy Valentine's Day, my love. You are my everything.</p>
+        <p>With all my love,</p>
+        <p>[Your Name]</p>
+    </div>
+</div>
+
+<script>
+    function openLetter() {
+        document.querySelector('.container').style.display = 'none';
+        document.querySelector('.open-letter-btn').style.display = 'none';
+        document.querySelector('.letter-content').classList.add('active');
     }
+</script>
 
-    function increaseNoButton() {
-      const noButton = document.getElementById("noButton");
-      noButton.innerHTML = noButtonPhrases[currentPhraseIndex];
-      currentPhraseIndex = (currentPhraseIndex + 1) % noButtonPhrases.length;
-
-      const yesButton = document.getElementById("yesButton");
-      yesButtonSize += 20; // Increase size more dramatically
-      yesButton.style.fontSize = `${yesButtonSize}px`;
-    }
-
-    function celebrateYes() {
-      document.getElementById("step2").style.display = "none";
-      document.getElementById("step3").style.display = "block";
-      // Reset yesButtonSize if needed
-      // yesButtonSize = 16;
-    }
-  </script>
 </body>
-
 </html>
