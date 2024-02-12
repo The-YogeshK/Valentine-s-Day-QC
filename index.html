@@ -19,7 +19,6 @@
 
     .container {
         text-align: center;
-        position: relative;
     }
 
     h1 {
@@ -28,13 +27,8 @@
         margin-bottom: 30px;
     }
 
-    .envelope-container {
-        position: relative;
-        margin-bottom: 50px;
-        display: inline-block;
-    }
-
     .envelope {
+        display: inline-block;
         position: relative;
         width: 200px;
         height: 150px;
@@ -42,16 +36,12 @@
         border-radius: 10px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         cursor: pointer;
-        transition: transform 0.4s ease;
         overflow: hidden;
+        transition: transform 0.4s ease;
     }
 
-    .heart {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 2rem;
-        color: #FF6863;
+    .envelope:hover {
+        transform: translateY(-10px);
     }
 
     .front-design {
@@ -84,6 +74,10 @@
 
     .letter-content {
         display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .letter-content.active {
@@ -96,7 +90,7 @@
         border-radius: 10px;
         padding: 20px;
         margin: auto;
-        max-width: 600px;
+        max-width: 90%;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
@@ -108,97 +102,17 @@
     p {
         line-height: 1.6;
     }
-
-    .floating-emoji {
-        position: absolute;
-        animation: float 3s infinite ease-in-out;
-    }
-
-    .emoji1 {
-        font-size: 2rem;
-        color: #FF6863;
-        left: 20%;
-        top: 50%;
-    }
-
-    .emoji2 {
-        font-size: 2.5rem;
-        color: #FF6863;
-        left: 50%;
-        top: 20%;
-    }
-
-    .emoji3 {
-        font-size: 3rem;
-        color: #FF6863;
-        left: 80%;
-        top: 70%;
-    }
-
-    .gif-container {
-        margin-top: 50px;
-        width: 100%;
-        height: auto;
-        max-width: 300px;
-        border: 2px solid #FF6863;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-    @media (max-width: 480px) {
-        .envelope {
-            width: 90%;
-            height: auto;
-            max-width: 300px;
-        }
-
-        .envelope-container {
-            margin-bottom: 20px;
-        }
-
-        .floating-emoji {
-            display: none;
-        }
-
-        .container {
-            padding: 0;
-        }
-
-        h1 {
-            margin-top: 50px;
-            margin-bottom: 20px;
-        }
-    }
-
-    @keyframes float {
-        0% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-20px);
-        }
-        100% {
-            transform: translateY(0);
-        }
-    }
 </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Happy Valentine's Day!</h1>
-    <div class="envelope-container">
-        <div class="envelope" onclick="openLetter()">
-            <div class="front-design"></div>
-            <div class="flap"></div>
-            <p style="position: absolute; top: 120px; left: 50%; transform: translateX(-50%); font-size: 1.2rem; color: #FF6863;">Open</p>
-        </div>
+    <div class="envelope" onclick="openLetter()">
+        <div class="front-design"></div>
+        <div class="flap"></div>
     </div>
 </div>
-
-<div class="floating-emoji emoji1">&#x1F495;</div>
-<div class="floating-emoji emoji2">&#x1F49C;</div>
-<div class="floating-emoji emoji3">&#x1F497;</div>
 
 <div class="letter-content" id="letterContent">
     <div class="letter">
@@ -214,11 +128,13 @@
 
 <script>
     function openLetter() {
-        document.querySelector('.envelope-container').style.display = 'none';
-        document.querySelectorAll('.floating-emoji').forEach(function(el) {
-            el.style.display = 'none';
-        });
-        document.querySelector('.letter-content').classList.add('active');
+        var envelope = document.querySelector('.envelope');
+        var letterContent = document.querySelector('.letter-content');
+
+        envelope.classList.add('open');
+        setTimeout(function() {
+            letterContent.classList.add('active');
+        }, 400);
     }
 </script>
 
