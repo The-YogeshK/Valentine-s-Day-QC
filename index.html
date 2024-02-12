@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Virtual Valentine's Day Card</title>
-<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 <style>
     body {
         background-color: #ffc3da;
-        font-family: 'Shadows Into Light', cursive;
-        padding: 20px;
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        margin: 0;
     }
 
     .container {
@@ -75,9 +75,14 @@
     .letter-content {
         display: none;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow-y: scroll;
     }
 
     .letter-content.active {
@@ -85,22 +90,20 @@
     }
 
     .letter {
-        background-color: #fff;
-        border: 2px solid #FF6863;
-        border-radius: 10px;
-        padding: 20px;
-        margin: auto;
-        max-width: 90%;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    h2 {
+        max-width: 600px;
+        margin: 0 auto;
         color: #FF6863;
-        margin-bottom: 20px;
+        font-size: 1.2rem;
+        line-height: 1.6;
     }
 
-    p {
-        line-height: 1.6;
+    .close-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+        color: #FF6863;
+        cursor: pointer;
     }
 </style>
 </head>
@@ -115,14 +118,15 @@
 </div>
 
 <div class="letter-content" id="letterContent">
+    <span class="close-button" onclick="closeLetter()">&times;</span>
     <div class="letter">
         <h2>My Dearest Kia,</h2>
         <p>On this special day, I want to express my deepest love and gratitude to you. You are the light of my life, and I am grateful every day for your presence.</p>
         <p>Your kindness, your laughter, and your unwavering support mean everything to me. You are my rock, my confidante, and my greatest love.</p>
         <p>Thank you for being by my side through thick and thin. I cherish every moment we spend together, and I look forward to creating many more beautiful memories with you.</p>
         <p>Happy Valentine's Day, my love. You are my everything.</p>
-        <p>With all my love,</p>
-        <p>[Your Name]</p>
+        <p>With all love,</p>
+        <p>Da Patti</p>
     </div>
 </div>
 
@@ -135,6 +139,14 @@
         setTimeout(function() {
             letterContent.classList.add('active');
         }, 400);
+    }
+
+    function closeLetter() {
+        var envelope = document.querySelector('.envelope');
+        var letterContent = document.querySelector('.letter-content');
+
+        envelope.classList.remove('open');
+        letterContent.classList.remove('active');
     }
 </script>
 
