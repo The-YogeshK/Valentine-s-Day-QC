@@ -144,9 +144,11 @@
     @keyframes fall {
         0% {
             transform: translateY(-10%);
+            opacity: 0;
         }
         100% {
-            transform: translateY(110%);
+            transform: translateY(100vh);
+            opacity: 1;
         }
     }
 </style>
@@ -155,7 +157,10 @@
 
 <div class="container">
     <h1>Happy Valentine's Day! 💌</h1>
-    
+    <div class="gif-container">
+        <!-- Replace "your-gif-url" with the URL of your GIF -->
+        <img src="your-gif-url" alt="Love GIF" width="200">
+    </div>
     <!-- Emojis falling randomly -->
     <div class="emoji" style="left: 10%; animation-delay: 1s;">&#128525;</div>
     <div class="emoji" style="left: 20%; animation-delay: 2s;">&#128514;</div>
@@ -208,7 +213,7 @@
         heart.classList.add('heart');
         heart.innerHTML = '❤️';
         heart.style.left = Math.random() * 90 + 'vw';
-        heart.style.top = Math.random() * 90 + 'vh';
+        heart.style.top = '0';
         document.body.appendChild(heart);
 
         setTimeout(function() {
