@@ -160,22 +160,26 @@
         var envelope = document.querySelector('.envelope');
         var letterContent = document.querySelector('.letter-content');
 
-        envelope.classList.add('open');
+        envelope.style.display = 'none';
+        letterContent.style.display = 'block';
+
         setTimeout(function() {
             letterContent.classList.add('active');
-        }, 400);
+            createHearts();
+        }, 100);
+    }
 
-        // Create and animate hearts
+    function createHearts() {
         for (var i = 0; i < 10; i++) {
-            createHeart();
+            setTimeout(createHeart, i * 200);
         }
     }
 
     function createHeart() {
         var heart = document.createElement('div');
         heart.classList.add('heart');
-        heart.style.left = Math.random() * window.innerWidth + 'px';
-        heart.style.top = Math.random() * window.innerHeight + 'px';
+        heart.style.left = Math.random() * 90 + 'vw';
+        heart.style.top = Math.random() * 90 + 'vh';
         document.body.appendChild(heart);
 
         setTimeout(function() {
@@ -190,7 +194,8 @@
         var envelope = document.querySelector('.envelope');
         var letterContent = document.querySelector('.letter-content');
 
-        envelope.classList.remove('open');
+        envelope.style.display = 'block';
+        letterContent.style.display = 'none';
         letterContent.classList.remove('active');
     }
 </script>
