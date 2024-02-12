@@ -16,6 +16,7 @@
         align-items: center;
         height: 100vh;
         position: relative;
+        overflow: hidden;
     }
 
     .container {
@@ -24,9 +25,14 @@
     }
 
     h1 {
-        font-size: 3rem;
+        font-size: 2rem;
         color: #FF6863;
         margin-bottom: 30px;
+    }
+
+    .emoji {
+        position: absolute;
+        animation: fall 5s linear infinite;
     }
 
     .envelope {
@@ -129,12 +135,21 @@
             opacity: 0;
         }
     }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(-10%);
+        }
+        100% {
+            transform: translateY(110%);
+        }
+    }
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Happy Valentine's Day!</h1>
+    <h1>Wishing you a day filled with love, joy, and happiness! 💖</h1>
     <div class="envelope" onclick="openLetter()">
         <div class="front-design"></div>
         <div class="flap"></div>
