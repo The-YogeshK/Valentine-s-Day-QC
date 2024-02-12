@@ -115,8 +115,7 @@
         position: absolute;
         width: 20px;
         height: 20px;
-        background-color: #FF6863;
-        border-radius: 50%;
+        font-size: 20px;
         z-index: 0;
     }
 
@@ -178,6 +177,7 @@
     function createHeart() {
         var heart = document.createElement('div');
         heart.classList.add('heart');
+        heart.innerHTML = '❤️';
         heart.style.left = Math.random() * 90 + 'vw';
         heart.style.top = Math.random() * 90 + 'vh';
         document.body.appendChild(heart);
