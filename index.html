@@ -14,26 +14,25 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
-        overflow-x: hidden;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
     }
 
     .frame {
         border: 10px solid #FF6863;
-        padding: 5vw;
-        border-radius: 5vw;
-        max-width: 90vw;
+        padding: 0px;
+        border-radius: 20px;
     }
 
     h1 {
-        font-size: 5vw;
+        font-size: 2rem;
         color: #FF6863;
-        margin-bottom: 5vw;
-        text-align: center;
+        margin-bottom: 20px;
     }
 
     .gif-container {
-        margin-bottom: 5vw;
+        margin-bottom: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -53,13 +52,11 @@
 
     .envelope {
         position: relative;
-        width: 40vw; /* Adjusted width for mobile */
-        max-width: 200px;
-        height: 32vw; /* Adjusted height for mobile */
-        max-height: 160px;
+        width: 250px; /* Increased width for a more letter-like appearance */
+        height: 200px; /* Increased height for a more letter-like appearance */
         background-color: #ffffff; /* White background to resemble a letter */
-        border-radius: 5vw;
-        box-shadow: 0 2vw 10vw rgba(0, 0, 0, 0.2); /* Adjusted box shadow for mobile */
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         cursor: pointer;
         overflow: hidden;
         transition: transform 0.4s ease;
@@ -67,18 +64,18 @@
     }
 
     .envelope:hover {
-        transform: translateY(-5vw);
+        transform: translateY(-10px);
     }
 
     .flap {
         position: absolute;
-        top: 5vw; /* Adjusted position */
-        right: -5vw; /* Adjusted position */
+        top: 10px; /* Adjusted position */
+        right: -25px; /* Adjusted position */
         width: 0;
         height: 0;
-        border-left: 10vw solid transparent; /* Adjusted size for mobile */
-        border-right: 10vw solid transparent; /* Adjusted size for mobile */
-        border-bottom: 10vw solid #ffffff; /* Adjusted size for mobile */
+        border-left: 50px solid transparent; /* Triangle height */
+        border-right: 50px solid transparent; /* Triangle height */
+        border-bottom: 50px solid #ffffff; /* Triangle width and color */
         transform: rotate(45deg); /* Rotate the flap */
         transition: transform 0.4s ease;
     }
@@ -89,12 +86,10 @@
 
     .stamp {
         position: absolute;
-        bottom: 5vw; /* Adjusted position */
-        right: 5vw; /* Adjusted position */
-        width: 10vw;
-        height: 10vw;
-        max-width: 50px;
-        max-height: 50px;
+        bottom: 20px; /* Adjusted position */
+        right: 20px; /* Adjusted position */
+        width: 50px;
+        height: 50px;
         background-color: #FF6863;
         border-radius: 50%;
         display: flex;
@@ -102,7 +97,7 @@
         align-items: center;
         color: white;
         font-weight: bold;
-        font-size: 5vw; /* Adjusted font size for mobile */
+        font-size: 1.2rem;
     }
 
     .letter-content {
@@ -111,10 +106,9 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: calc(100% - 15vw); /* Adjusted height for mobile */
-        max-height: calc(100vh - 75px);
+        height: calc(100% - 60px); /* Subtracting the space for the button */
         background-color: #fff;
-        padding: 5vw;
+        padding: 20px;
         box-sizing: border-box;
         overflow-y: auto;
         z-index: 0;
@@ -125,29 +119,27 @@
     }
 
     .letter {
-        max-width: 90vw;
+        max-width: 600px;
         margin: 0 auto;
         color: #FF6863;
-        font-size: 4vw; /* Adjusted font size for mobile */
+        font-size: 1.2rem;
         line-height: 1.6;
     }
 
     .heart {
         position: absolute;
-        width: 5vw;
-        height: 5vw;
-        max-width: 25px;
-        max-height: 25px;
-        font-size: 5vw; /* Adjusted font size for mobile */
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
         z-index: 0;
     }
 
     .next-button {
         display: none;
         position: fixed;
-        bottom: 5vw; /* Adjusted position */
-        right: 5vw; /* Adjusted position */
-        font-size: 5vw; /* Adjusted font size for mobile */
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.5rem;
         color: #FF6863;
         cursor: pointer;
         z-index: 2;
@@ -155,7 +147,7 @@
 
     .end-page {
         background-color: #ffbfd9; /* Cute pastel color, darker pink */
-        min-height: 100vh;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -168,21 +160,20 @@
 
     /* Style end message with individual pastel dark colors */
     .end-message {
-        font-size: 3vw; /* Adjusted font size for mobile */
+        font-size: 1rem;
         text-align: center;
-        margin-bottom: 5vw;
+        margin-bottom: 20px;
         color: #0f4c75; /* Pastel dark blue */
     }
 
     .end-gif {
-        width: 40vw; /* Adjusted width for mobile */
-        max-width: 300px;
+        width: 300px;
         height: auto;
-        margin-bottom: 5vw;
+        margin-bottom: 20px;
     }
 
     .end-button {
-        font-size: 5vw; /* Adjusted font size for mobile */
+        font-size: 1.5rem;
         color: #FF6863;
         cursor: pointer;
     }
@@ -206,56 +197,48 @@
             transform: translateY(110%);
         }
     }
-    
-    /* Styling for the "Happy Valentine's Day" text */
-    .valentine-text {
-        font-size: 8vw; /* Adjusted font size for mobile */
-        font-family: 'Kaushan Script', cursive;
-        background: -webkit-linear-gradient(#ff758c, #ff7eb3); /* Gradient background */
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 5vw;
-    }
 </style>
 </head>
 <body>
 
 <div class="frame">
     <div class="container">
-        <!-- Updated style for the "Happy Valentine's Day" text -->
-        <h1 class="valentine-text">Happy Valentine's Day!💌</h1>
-        <div class="gif-container">
-            <!-- Insert your GIF here -->
-        </div>
-        <div class="envelope-container">
-            <div class="envelope" onclick="openLetter()">
-                <div class="flap"></div>
-                <div class="stamp">❤️</div>
-            </div>
-        </div>
-
-        <div class="letter-content" id="letterContent">
-            <div class="letter">
-                <h2>My Dearest Kia,</h2>
-                <p>As the world celebrates love on this beautiful Valentine's Day, I find myself drawn to express my deepest sentiments to you. It is with a heart full of gratitude and admiration that I write these words to you.</p>
-                <p>First and foremost, I want to wish you a Happy Valentine's Day. May this day be filled with warmth, joy, and an abundance of love, just like the love you radiate into my life every single day.</p>
-                <p>I want to take this moment to express my heartfelt appreciation for all that you are and all that you do. Your presence in my life has been nothing short of transformative. You have an incredible ability to touch the lives of those around you, including mine, with your kindness, compassion, and unwavering support.</p>
-                <p>In the midst of life's challenges, you continue to shine brightly, demonstrating resilience and strength beyond measure. Your dedication to your dreams and your unwavering commitment to making a positive difference in the world inspire me endlessly.</p>
-                <p>I believe in you wholeheartedly, Kia. I believe in your ability to overcome any obstacle, to achieve your goals, and to become the incredible nurse that you aspire to be. Your compassion and empathy make you a natural healer, and I have no doubt that you will touch countless lives with your kindness and care.</p>
-                <p>As we celebrate this day of love, I want you to know that you deserve every ounce of happiness and love that comes your way. You are a beacon of light in my life, and I am eternally grateful for your presence. I promise to stand by your side, supporting you, loving you, and cherishing every moment we share together.</p>
-                <p>Thank you for being the extraordinary person that you are, Kia. You are my greatest blessing, and I am forever grateful for the gift of your love.</p>
-                <p>~Y</p>
-            </div>
-        </div>
-
-        <button class="next-button" onclick="nextPage()">Next</button>
+        <h1>Happy Valentine's Day!💌</h1>
+        <div class="emoji">&#128525;</div>
+        <div class="emoji">&#128514;</div>
+        <div class="emoji">&#128536;</div>
+        <div class="emoji">&#128525;</div>
     </div>
+    <div class="envelope-container">
+        <div class="envelope" onclick="openLetter()">
+            <div class="flap"></div>
+            <div class="stamp">❤️</div>
+        </div>
+    </div>
+
+    <div class="letter-content" id="letterContent">
+        <!-- Close button removed -->
+        <div class="letter">
+            <h2>My Dearest Kia,</h2>
+            <p>As the world celebrates love on this beautiful Valentine's Day, I find myself drawn to express my deepest sentiments to you. It is with a heart full of gratitude and admiration that I write these words to you.</p>
+            <p>First and foremost, I want to wish you a Happy Valentine's Day. May this day be filled with warmth, joy, and an abundance of love, just like the love you radiate into my life every single day.</p>
+            <p>I want to take this moment to express my heartfelt appreciation for all that you are and all that you do. Your presence in my life has been nothing short of transformative. You have an incredible ability to touch the lives of those around you, including mine, with your kindness, compassion, and unwavering support.</p>
+            <p>In the midst of life's challenges, you continue to shine brightly, demonstrating resilience and strength beyond measure. Your dedication to your dreams and your unwavering commitment to making a positive difference in the world inspire me endlessly.</p>
+            <p>I believe in you wholeheartedly, Kia. I believe in your ability to overcome any obstacle, to achieve your goals, and to become the incredible nurse that you aspire to be. Your compassion and empathy make you a natural healer, and I have no doubt that you will touch countless lives with your kindness and care.</p>
+            <p>As we celebrate this day of love, I want you to know that you deserve every ounce of happiness and love that comes your way. You are a beacon of light in my life, and I am eternally grateful for your presence. I promise to stand by your side, supporting you, loving you, and cherishing every moment we share together.</p>
+            <p>Thank you for being the extraordinary person that you are, Kia. You are my greatest blessing, and I am forever grateful for the gift of your love.</p>
+            <p>~Y</p>
+        </div>
+    </div>
+
+    <button class="next-button" onclick="nextPage()">Next</button>
 </div>
 
 <div class="end-page" id="endPage" style="display: none;">
     <div class="end-message" style="color: #8f0a03;">💖 In This Amazing Journey Together, Let's Raise A Toast To All The Cherished Memories We Hold And The Amazing Adventures That Awaits Us. 💖</div>
     <div class="gif-container">
         <!-- Insert your GIF here -->
+        <img class="end-gif" src="https://media1.tenor.com/m/zoC7rhh9lNgAAAAd/puuung-holding-hands.gif" alt="Cherish Memories GIF">
     </div>
 </div>
 
