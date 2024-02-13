@@ -21,15 +21,18 @@
     }
 
     .frame {
-        border: 10px solid #FF6863;
         padding: 0px;
-        border-radius: 50vw; /* Adjusted to fit the whole screen */
     }
 
     h1 {
         font-size: 2rem;
         color: #FF6863;
         margin-bottom: 20px;
+    }
+
+    .gif-container, .end-page {
+        background: url('https://img.freepik.com/premium-vector/pink-flower-background-with-watercolor-effect_664601-2866.jpg?w=1480') no-repeat center center fixed;
+        background-size: cover;
     }
 
     .gif-container {
@@ -205,10 +208,7 @@
 <div class="frame">
     <div class="container">
         <h1>Happy Valentine's Day!</h1>
-        <div class="emoji">&#128525;</div>
-        <div class="emoji">&#128514;</div>
-        <div class="emoji">&#128536;</div>
-        <div class="emoji">&#128525;</div>
+        <!-- Removed floating emoji -->
     </div>
     <div class="envelope-container">
         <div class="envelope" onclick="openLetter()">
@@ -244,7 +244,14 @@
 </div>
 
 <script>
+    // Define a variable to keep track of whether the letter is open or not
+    var letterOpened = false;
+
+    // Function to open the letter
     function openLetter() {
+        // Set letterOpened to true
+        letterOpened = true;
+
         var envelope = document.querySelector('.envelope');
         var letterContent = document.querySelector('.letter-content');
         var nextButton = document.querySelector('.next-button');
@@ -253,11 +260,45 @@
         letterContent.style.display = 'block';
         nextButton.style.display = 'block';
 
+        // Stop the emoji animation
+        stopFlowerAnimation();
+        
         setTimeout(function() {
             letterContent.classList.add('active');
             createHearts();
         }, 100);
     }
+
+    // Function to stop the emoji animation
+    function stopFlowerAnimation() {
+        var emojis = document.querySelectorAll('.emoji');
+        emojis.forEach(function(emoji) {
+            emoji.style.animation = 'none';
+        });
+    }
+
+    // Function to create flower emojis
+    function createFlowerEmojis() {
+        if (!letterOpened) {
+            var emoji = document.createElement('div');
+            emoji.classList.add('emoji');
+            emoji.innerHTML = '🌸';
+            emoji.style.left = Math.random() * 90 + 'vw';
+            emoji.style.top = Math.random() * 90 + 'vh';
+            document.body.appendChild(emoji);
+
+            setTimeout(function() {
+                emoji.remove();
+            }, 5000);
+        }
+        // Call the function recursively to create continuous flickering
+        setTimeout(createFlowerEmojis, 1000);
+    }
+
+    // Call the function to start creating flower emojis
+    createFlowerEmojis();
+
+    // Rest of the code remains the same...
 
     function createHearts() {
         for (var i = 0; i < 10; i++) {
