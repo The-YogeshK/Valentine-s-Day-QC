@@ -28,7 +28,7 @@
     h1 {
         font-size: 2rem;
         color: #FF6863;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
     .gif-container {
@@ -43,8 +43,13 @@
         animation: fall 5s linear infinite;
     }
 
+    .envelope-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .envelope {
-        display: inline-block;
         position: relative;
         width: 200px;
         height: 150px;
@@ -115,11 +120,6 @@
         line-height: 1.6;
     }
 
-    /* Remove close button from letter */
-    .close-button {
-        display: none;
-    }
-
     .heart {
         position: absolute;
         width: 20px;
@@ -152,17 +152,12 @@
         width: 100%;
     }
 
-    /* Style end message with multicolor and border */
+    /* Style end message with individual pastel dark colors */
     .end-message {
-        font-size: 2rem;
+        font-size: 1rem;
         text-align: center;
         margin-bottom: 20px;
-        background: linear-gradient(to right, #FF6863, #FFD700, #32CD32, #00BFFF, #800080);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        border: 3px solid #FF6863;
-        padding: 10px 20px;
-        border-radius: 10px;
+        color: #0f4c75; /* Pastel dark blue */
     }
 
     .end-gif {
@@ -207,6 +202,8 @@
         <div class="emoji">&#128514;</div>
         <div class="emoji">&#128536;</div>
         <div class="emoji">&#128525;</div>
+    </div>
+    <div class="envelope-container">
         <div class="envelope" onclick="openLetter()">
             <div class="front-design"></div>
             <div class="flap"></div>
@@ -232,7 +229,7 @@
 </div>
 
 <div class="end-page" id="endPage" style="display: none;">
-    <div class="end-message">💖 In This Amazing Journey Together, Let's Raise A Toast To All The Cherished Memories We Hold And The Amazing Adventures That Awaits Us. 💖</div>
+    <div class="end-message" style="color: #8f0a03;">💖 In This Amazing Journey Together, Let's Raise A Toast To All The Cherished Memories We Hold And The Amazing Adventures That Awaits Us. 💖</div>
     <div class="gif-container">
         <!-- Insert your GIF here -->
         <img class="end-gif" src="https://media1.tenor.com/m/zoC7rhh9lNgAAAAd/puuung-holding-hands.gif" alt="Cherish Memories GIF">
