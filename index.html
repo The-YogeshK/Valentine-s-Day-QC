@@ -19,15 +19,16 @@
         overflow: hidden;
     }
 
-    .container {
-        text-align: center;
-        position: relative;
+    .frame {
+        border: 10px solid #FF6863;
+        padding: 20px;
+        border-radius: 20px;
     }
 
     h1 {
-        font-size: 3rem;
+        font-size: 2rem;
         color: #FF6863;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
 
     .gif-container {
@@ -114,15 +115,9 @@
         line-height: 1.6;
     }
 
+    /* Remove close button from letter */
     .close-button {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 1.5rem;
-        color: #FF6863;
-        cursor: pointer;
-        z-index: 2;
+        display: none;
     }
 
     .heart {
@@ -137,8 +132,7 @@
         display: none;
         position: fixed;
         bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
+        right: 20px;
         font-size: 1.5rem;
         color: #FF6863;
         cursor: pointer;
@@ -158,11 +152,17 @@
         width: 100%;
     }
 
+    /* Style end message with multicolor and border */
     .end-message {
         font-size: 2rem;
-        color: #FF6863;
         text-align: center;
         margin-bottom: 20px;
+        background: linear-gradient(to right, #FF6863, #FFD700, #32CD32, #00BFFF, #800080);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        border: 3px solid #FF6863;
+        padding: 10px 20px;
+        border-radius: 10px;
     }
 
     .end-gif {
@@ -200,34 +200,36 @@
 </head>
 <body>
 
-<div class="container">
-    <h1>Happy Valentine's Day! 💌</h1>
-    <div class="emoji">&#128525;</div>
-    <div class="emoji">&#128514;</div>
-    <div class="emoji">&#128536;</div>
-    <div class="emoji">&#128525;</div>
-    <div class="envelope" onclick="openLetter()">
-        <div class="front-design"></div>
-        <div class="flap"></div>
+<div class="frame">
+    <div class="container">
+        <h1>Happy Valentine's Day! 💌</h1>
+        <div class="emoji">&#128525;</div>
+        <div class="emoji">&#128514;</div>
+        <div class="emoji">&#128536;</div>
+        <div class="emoji">&#128525;</div>
+        <div class="envelope" onclick="openLetter()">
+            <div class="front-design"></div>
+            <div class="flap"></div>
+        </div>
     </div>
-</div>
 
-<div class="letter-content" id="letterContent">
-    <span class="close-button" onclick="closeLetter()">&times;</span>
-    <div class="letter">
-        <h2>My Dearest Kia,</h2>
-        <p>As the world celebrates love on this beautiful Valentine's Day, I find myself drawn to express my deepest sentiments to you. It is with a heart full of gratitude and admiration that I write these words to you.</p>
-        <p>First and foremost, I want to wish you a Happy Valentine's Day. May this day be filled with warmth, joy, and an abundance of love, just like the love you radiate into my life every single day.</p>
-        <p>I want to take this moment to express my heartfelt appreciation for all that you are and all that you do. Your presence in my life has been nothing short of transformative. You have an incredible ability to touch the lives of those around you, including mine, with your kindness, compassion, and unwavering support.</p>
-        <p>In the midst of life's challenges, you continue to shine brightly, demonstrating resilience and strength beyond measure. Your dedication to your dreams and your unwavering commitment to making a positive difference in the world inspire me endlessly.</p>
-        <p>I believe in you wholeheartedly, Kia. I believe in your ability to overcome any obstacle, to achieve your goals, and to become the incredible nurse that you aspire to be. Your compassion and empathy make you a natural healer, and I have no doubt that you will touch countless lives with your kindness and care.</p>
-        <p>As we celebrate this day of love, I want you to know that you deserve every ounce of happiness and love that comes your way. You are a beacon of light in my life, and I am eternally grateful for your presence. I promise to stand by your side, supporting you, loving you, and cherishing every moment we share together.</p>
-        <p>Thank you for being the extraordinary person that you are, Kia. You are my greatest blessing, and I am forever grateful for the gift of your love.</p>
-        <p>~Y</p>
+    <div class="letter-content" id="letterContent">
+        <!-- Close button removed -->
+        <div class="letter">
+            <h2>My Dearest Kia,</h2>
+            <p>As the world celebrates love on this beautiful Valentine's Day, I find myself drawn to express my deepest sentiments to you. It is with a heart full of gratitude and admiration that I write these words to you.</p>
+            <p>First and foremost, I want to wish you a Happy Valentine's Day. May this day be filled with warmth, joy, and an abundance of love, just like the love you radiate into my life every single day.</p>
+            <p>I want to take this moment to express my heartfelt appreciation for all that you are and all that you do. Your presence in my life has been nothing short of transformative. You have an incredible ability to touch the lives of those around you, including mine, with your kindness, compassion, and unwavering support.</p>
+            <p>In the midst of life's challenges, you continue to shine brightly, demonstrating resilience and strength beyond measure. Your dedication to your dreams and your unwavering commitment to making a positive difference in the world inspire me endlessly.</p>
+            <p>I believe in you wholeheartedly, Kia. I believe in your ability to overcome any obstacle, to achieve your goals, and to become the incredible nurse that you aspire to be. Your compassion and empathy make you a natural healer, and I have no doubt that you will touch countless lives with your kindness and care.</p>
+            <p>As we celebrate this day of love, I want you to know that you deserve every ounce of happiness and love that comes your way. You are a beacon of light in my life, and I am eternally grateful for your presence. I promise to stand by your side, supporting you, loving you, and cherishing every moment we share together.</p>
+            <p>Thank you for being the extraordinary person that you are, Kia. You are my greatest blessing, and I am forever grateful for the gift of your love.</p>
+            <p>~Y</p>
+        </div>
     </div>
-</div>
 
-<button class="next-button" onclick="nextPage()">Next</button>
+    <button class="next-button" onclick="nextPage()">Next</button>
+</div>
 
 <div class="end-page" id="endPage" style="display: none;">
     <div class="end-message">💖 In This Amazing Journey Together, Let's Raise A Toast To All The Cherished Memories We Hold And The Amazing Adventures That Awaits Us. 💖</div>
